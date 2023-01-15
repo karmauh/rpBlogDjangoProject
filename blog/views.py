@@ -4,10 +4,6 @@ from .models import Post
 from .forms import PostForm, EditPostForm
 
 # Create your views here.
-
-# def home(request):
-#     return render(request, 'home.html', {})
-
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
@@ -28,6 +24,3 @@ class UpdatePostView(UpdateView):
     form_class = EditPostForm
     template_name = 'update_post.html'
     #fields = ('title', 'title_tag', 'body')
-    
-    
-# odcinek: https://www.youtube.com/watch?v=8NPOwmtupiI
