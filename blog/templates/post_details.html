@@ -3,12 +3,12 @@
 {% block title %} {{ post.title_tag }} {% endblock %}
 
 {% block content %}
-
-<h1>{{ post.title }}</h1> <small><a href="{% url 'update_post' post.pk %}">(Edit)</a> | <a href="{% url 'delete_post' post.pk %}">(Delete)</a></small><br>
+current user: {{ user.id }}
+<h1>{{ post.title }}</h1>{% if user.is_authenticated and user.id == user.current %}<small><a href="{% url 'update_post' post.pk %}">(Edit)</a> | <a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>{% endif %}<br>
 by: {{ post.author }}
 tags: {{ post.title_tag }}
 <br/>
-{{ post.body }}
+{{ post.body|safe }}
 
 <br/>
 <br/>

@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+    {% if user.id == 1 %}
 <h1>Add Post...</h1>
 
 <div class="form-group">
@@ -18,5 +20,12 @@
 
 <br>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+    {% endif %}
+{% else %}
+
+<h1>You are not logged in</h1>
+
+{% endif %}
+
 
 {% endblock %}

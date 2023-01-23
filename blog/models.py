@@ -6,8 +6,9 @@ from django.urls import reverse
 class Post(models.Model):
     title = models.CharField(max_length=255)
     title_tag = models.CharField(max_length=255, default=None, blank=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default='root')
     body = models.TextField()
+    snippet = models.TextField(max_length=255)
     
     def __str__(self):
         return self.title + ' | ' + str(self.author)
