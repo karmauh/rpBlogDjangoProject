@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Create character... {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1>Create character...</h1>
+
+<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-secondary">Create character</button>
+</form>
+</div>
+
+
+<br>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+{% else %}
+
+<h1>You are not logged in</h1>
+
+{% endif %}
+
+
+{% endblock %}

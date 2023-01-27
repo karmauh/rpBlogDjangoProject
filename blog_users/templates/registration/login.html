@@ -4,14 +4,19 @@
 
 {% block content %}
 
+<br>  
 <h1>Login...</h1>
-
+<br>
 <div class="form-group">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-secondary">Login</button>
     </form>
+    <br>
+    <small>
+        If you do not have an account yet. Create one -> <a href="{% url 'register' %}">here</a>
+    </small>
 </div>
 
 <br>

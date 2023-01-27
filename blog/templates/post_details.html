@@ -1,18 +1,52 @@
 {% extends 'base.html' %}
 
+
 {% block title %} {{ post.title_tag }} {% endblock %}
 
 {% block content %}
 current user: {{ user.id }}
-<h1>{{ post.title }}</h1>{% if user.is_authenticated and user.id == user.current %}<small><a href="{% url 'update_post' post.pk %}">(Edit)</a> | <a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>{% endif %}<br>
+<h1>
+    {{ post.title }}
+</h1>
+
+{% if user.is_authenticated %}
+    {% if user.id == 1 %}
+        <small>
+            <a href="{% url 'update_post' post.pk %}">(Edit)</a> |
+            <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+        </small>
+    {% endif %}
+{% endif %}
+<br>
 by: {{ post.author }}
-tags: {{ post.title_tag }}
 <br/>
 {{ post.body|safe }}
+<hr>
+<h2>Comments...</h2>
+<br>
 
-<br/>
-<br/>
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+{% if not post.comments.all %}
+        No comments yet... <a href="{% url 'add_comment' post.pk %}">Add one</a>
+{% else %}
+    <a href="{% url 'add_comment' post.pk %}">Add Comment</a><br><br>
+    {% for comment in post.comments.all %}
 
- 
+        <div class="d-flex flex-start mb-4">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <div class="">
+                        <h5><a href="{% url 'all_profiles' %}" style="color: black;">{{ comment.name }}</a></h5>
+                        <p class="small">
+                            {{ comment.name }} - {{ comment.date_added }}
+                        </p>
+                        <p>
+                            {{ comment.body }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}

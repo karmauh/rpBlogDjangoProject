@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit character... {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
+<br><br>
+<h1>Edit character...</h1>
+
+<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-secondary">Update character</button>
+    <input class="btn btn-secondary" type="reset" value="Reset">
+</form>
+</div>
+
+
+<br>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+    {% endif %}
+{% else %}
+
+<h1>You are not logged in</h1>
+
+{% endif %}
+
+
+{% endblock %}

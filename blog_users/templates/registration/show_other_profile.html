@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Show profiles {% endblock %}
+
+{% block content %}
+
+<br><br>
+{% for user in users %}
+
+<h1>{{ user }} profile...</h1>
+<br>
+
+<div class="card mb-3" style="max-width: 1300px;">
+    <div class="row g-3">
+      <div class="col-md-4">
+        {% if user.profile_pic %}
+          <img src="{{ user.profile_pic.url }}" class="img-fluid rounded-start" alt="pic">
+        {% else %}
+          <img src="{% static 'blog/images/defualt_profile_pic.png' %}" class="img-fluid rounded-start" alt="pic">
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            Name:
+          </h5>
+          {{ user.user.first_name }} {{ user.user.last_name }}
+          <p class="card-text">
+            <h5 class="card-title">
+                Age:
+            </h5>
+            {{ user.age }}
+          </p>
+          <p class="card-text">
+            <h5 class="card-title">
+                Appearance:
+            </h5>
+            {{ user.appearance }}
+          </p>
+          <p class="card-text">
+            <h5 class="card-title">
+                History:
+            </h5>
+            {{ user.history }}
+          </p>
+          <p class="card-text"><small class="text-muted">
+            Username: {{ user }}
+          </small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+
+<br>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<br><br>
+
+{% endblock %}
