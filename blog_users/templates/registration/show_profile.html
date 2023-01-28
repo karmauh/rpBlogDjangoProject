@@ -4,10 +4,11 @@
 {% block title %} Show profile {% endblock %}
 
 {% block content %}
-  
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/post_details.css' %}">
+
 <br><br>
-<h1>{{ page_user }} profile...</h1>
-<br>
+<h1>Your character profile, <i>{{ page_user }}</i>.</h1>
+<hr>
 <div class="card mb-3" style="max-width: 1300px;">
     <div class="row g-3">
       <div class="col-md-4">

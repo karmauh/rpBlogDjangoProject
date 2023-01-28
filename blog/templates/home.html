@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} RolePlay Blog {% endblock %}
 
 {% block content %}
-  
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/home.css' %}">
+<br>
 <h1>RPBlog</h1>
+<hr>
 
+<br>
 <ul>
 {% for post in object_list %}
-    <li><a href="{% url 'post_details' post.pk %}">{{ post.title }}</a> -||- {{ post.author }} -|| {% if user.is_authenticated and user.id == 1 %}- <small><a href="{% url 'update_post' post.pk %}">(Edit)</a> | <a href="{% url 'delete_post' post.pk %}">(Delete)</a> </small> {% endif %} <br/>
-    {{ post.snippet }}
+    <li class="lili">
+        <a href="{% url 'post_details' post.pk %}">{{ post.title }}</a> - {{ post.author }} - 
+        {% if user.is_authenticated and user.id == 1 %}
+            <small>
+                <a href="{% url 'update_post' post.pk %}" class="ahome">(Edit)</a> / 
+                <a href="{% url 'delete_post' post.pk %}" class="ahome">(Delete)</a> 
+            </small> 
+        {% endif %} 
+        <br><br>
+        <p>
+            {{ post.snippet }}
+        </p>
+        <hr>
     </li>
 {% endfor %}
 </ul>

@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Add Post... {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/home.css' %}">
 
 {% if user.is_authenticated %}
     {% if user.id == 1 %}
+<br>
 <h1>Add Post...</h1>
-
+<hr>
 <div class="form-group">
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">Create Post</button>
-    <input class="btn btn-secondary" type="reset" value="Reset">
+    <button class="btn btn-secondary" style="width: 235px;">Create Post</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 </form>
 </div>
-
-
-<br>
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<br><br>
     {% endif %}
 {% else %}
 

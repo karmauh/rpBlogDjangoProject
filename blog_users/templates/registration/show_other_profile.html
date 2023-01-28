@@ -4,14 +4,15 @@
 {% block title %} Show profiles {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/post_details.css' %}">
 
 <br><br>
 {% for user in users %}
 
-<h1>{{ user }} profile...</h1>
-<br>
+<hr>
+<h1><i>{{ user }}</i> profile</h1>
 
-<div class="card mb-3" style="max-width: 1300px;">
+<div class="card mb-3" style="max-width: 1300px; border: 2px solid black;">
     <div class="row g-3">
       <div class="col-md-4">
         {% if user.profile_pic %}
@@ -23,14 +24,14 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">
-            Name:
+            Name: {{ user.user.first_name }} {{ user.user.last_name }}
           </h5>
-          {{ user.user.first_name }} {{ user.user.last_name }}
+          
           <p class="card-text">
             <h5 class="card-title">
-                Age:
+                Age: {{ user.age }}
             </h5>
-            {{ user.age }}
+            
           </p>
           <p class="card-text">
             <h5 class="card-title">
@@ -44,9 +45,6 @@
             </h5>
             {{ user.history }}
           </p>
-          <p class="card-text"><small class="text-muted">
-            Username: {{ user }}
-          </small></p>
         </div>
       </div>
     </div>

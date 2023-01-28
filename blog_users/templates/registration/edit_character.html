@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Edit character... {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/post_details.css' %}">
 
 {% if user.is_authenticated %}
     {% if user.id == profile.user.id %}
 <br><br>
 <h1>Edit character...</h1>
-
+<hr>
 <div class="form-group">
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+    <br>
     <button class="btn btn-secondary">Update character</button>
     <input class="btn btn-secondary" type="reset" value="Reset">
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 </form>
 </div>
 
-
-<br>
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
     {% endif %}
 {% else %}
 

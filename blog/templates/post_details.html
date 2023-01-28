@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %} {{ post.title_tag }} {% endblock %}
 
 {% block content %}
-current user: {{ user.id }}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/post_details.css' %}">
+<br>
 <h1>
     {{ post.title }}
 </h1>
-
+by: {{ post.author }} <br>
 {% if user.is_authenticated %}
     {% if user.id == 1 %}
         <small>
@@ -17,20 +18,18 @@ current user: {{ user.id }}
         </small>
     {% endif %}
 {% endif %}
-<br>
-by: {{ post.author }}
-<br/>
+<hr>
 {{ post.body|safe }}
 <hr>
+<br>
 <h2>Comments...</h2>
 <br>
 
 {% if not post.comments.all %}
         No comments yet... <a href="{% url 'add_comment' post.pk %}">Add one</a>
 {% else %}
-    <a href="{% url 'add_comment' post.pk %}">Add Comment</a><br><br>
+    <a href="{% url 'add_comment' post.pk %}" style="font-size: 25px;">Add Comment...</a><br><br>
     {% for comment in post.comments.all %}
-
         <div class="d-flex flex-start mb-4">
             <div class="card w-100">
                 <div class="card-body p-4">

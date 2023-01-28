@@ -57,7 +57,6 @@ class CreateCharacterForm(forms.ModelForm):
     age = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
     appearance = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     history = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
-    #profile_pic = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control-file'}))
     
     class Meta:
         model = Profile
