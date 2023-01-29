@@ -1,6 +1,15 @@
 # rpBlogDjangoProject
 ## RolePlay django blog, with the possibility of writing your own stories
-
+**staff user:**  
+login: root  
+passwd: root  
+  
+**basic user:**  
+login: marie  
+passwd: Jakieshaslo123  
+  
+  
+  
 PL/  
 **Witaj na interaktywnym blogu do role-play!**  
 Tutaj możesz stworzyć swoją własną unikalną postać i wyruszyć w emocjonującą przygodę z innymi graczami.  
@@ -20,13 +29,3 @@ Whether you're a seasoned role-player or new to the scene, we have something for
 Dive into our world and let your imagination run wild as you explore new characters, plots, and settings.  
   
 Join us today and let the fun begin!  
-
-
-
-**staff user:**  
-login: root  
-passwd: root  
-
-**basic user:**  
-login: marie  
-passwd: Jakieshaslo123  
