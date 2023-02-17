@@ -8,7 +8,11 @@ passwd: root
 login: marie  
 passwd: Jakieshaslo123  
   
-  
+---
+
+***work in progress....***
+
+---
   
 PL/  
 **Witaj na interaktywnym blogu do role-play!**  
